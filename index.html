@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DMLR Servicios Contables</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <main>
+    <section class="bienvenida">
+      <div class="contenedor-bienvenida">
+        <div class="texto">
+          <h1>Soluciones contables<br>a tu alcance</h1>
+          <p>Ofrecemos servicios contables para personas naturales y jurídicas</p>
+          <a href="#nosotros" class="boton-verde">Conócenos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    // Cargar el header
+    fetch('header.html')
+      .then(response => {
+        if (!response.ok) throw new Error('No se pudo cargar el header');
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById('header-container').innerHTML = data;
+      })
+      .catch(error => console.error('Error al cargar el header:', error));
+
+    // Cargar el footer
+    fetch('footer.html')
+      .then(response => {
+        if (!response.ok) throw new Error('No se pudo cargar el footer');
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      })
+      .catch(error => console.error('Error al cargar el footer:', error));
+  </script>
+
+</body>
+</html>

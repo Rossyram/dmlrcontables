@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gracias | DMLR Servicios Contables</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <main>
+    <h2>¡Gracias por tu mensaje!</h2>
+    <p>Hemos recibido tu consulta. Nos pondremos en contacto contigo lo antes posible.</p>
+    <a href="index.html">Volver al inicio</a>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    function loadHTML(url, elementId) {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status} al cargar ${url}`);
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById(elementId).innerHTML = data;
+        })
+        .catch(error => {
+          console.error(`Error al cargar el contenido:`, error);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHTML('header.html', 'header-container');
+      loadHTML('footer.html', 'footer-container');
+    });
+  </script>
+
+</body>
+</html>

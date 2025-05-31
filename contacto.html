@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contáctenos | DMLR Servicios Contables</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <main>
+    <h2>Contáctenos</h2>
+    <p>¿Tienes alguna duda o deseas una asesoría personalizada? Escríbenos a través del formulario:</p>
+
+    <section class="contacto-form">
+      <form action="https://formsubmit.co/dmlrcontable@gmail.com" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <!-- Campos ocultos -->
+        <input type="hidden" name="_next" value="https://tusitio.com/gracias.html" />
+        <input type="hidden" name="_captcha" value="false" />
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <section class="contacto-info">
+        <p><strong>Correo:</strong> contacto@dmlrcontables.com</p>
+        <p><strong>Teléfono:</strong> (+57) 300 123 4567</p>
+        <p><strong>Ubicación:</strong> Bogotá, Colombia</p>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    function loadHTML(url, elementId) {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status} al cargar ${url}`);
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById(elementId).innerHTML = data;
+        })
+        .catch(error => {
+          console.error(`Error al cargar el contenido:`, error);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHTML('header.html', 'header-container');
+      loadHTML('footer.html', 'footer-container');
+    });
+  </script>
+
+</body>
+</html>

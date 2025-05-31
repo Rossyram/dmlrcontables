@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios | DMLR Servicios Contables</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <main>
+    <h2>Nuestros Servicios</h2>
+    <p>Ofrecemos soluciones contables adaptadas a tus necesidades:</p>
+    
+    <section class="servicios">
+      <div class="grid-servicios">
+        <div class="card">
+          <img src="img/tax.png" alt="Icono impuesto">
+          <h3>Asesoría y presentación de impuestos</h3>
+        </div>
+        <div class="card">
+          <img src="img/exogena.png" alt="Icono exógena">
+          <h3>Presentación de información exógena</h3>
+        </div>
+        <div class="card">
+          <img src="img/liquidacion.png" alt="Icono liquidación">
+          <h3>Asesoría en liquidaciones laborales</h3>
+        </div>
+        <div class="card">
+          <img src="img/contabilidad.png" alt="Icono contabilidad">
+          <h3>Contabilidad general</h3>
+        </div>
+      </div>
+    </section>
+    
+    <p>También ofrecemos orientación para nuevos emprendedores, microempresas y trabajadores independientes.</p>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    // Función para cargar contenido HTML de forma reusable
+    function loadHTML(url, elementId) {
+      fetch(url)
+        .then(response => {
+          // Verifica si la respuesta de la red fue exitosa
+          if (!response.ok) {
+            // Lanza un error si la respuesta no es OK (ej. 404 Not Found)
+            throw new Error(`HTTP error! status: ${response.status} al cargar ${url}`);
+          }
+          return response.text(); // Devuelve el contenido del archivo como texto
+        })
+        .then(data => {
+          // Inserta el contenido HTML en el elemento con el ID especificado
+          document.getElementById(elementId).innerHTML = data;
+        })
+        .catch(error => {
+          // Captura y muestra cualquier error que ocurra durante la carga
+          console.error(`Error al cargar el contenido:`, error);
+        });
+    }
+
+    // Cargar el header y el footer cuando el DOM esté completamente cargado
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHTML('header.html', 'header-container'); // Carga el header
+      loadHTML('footer.html', 'footer-container'); // Carga el footer
+    });
+  </script>
+
+</body>
+</html>
