@@ -11,65 +11,60 @@
   <div id="header-container"></div>
 
   <main>
-  <h1>¿Quiénes somos?</h1>
-  <div class="contenedor-nosotros">
-    <div class="fila-superior">
-      <div class="caja">
-        <h3>Misión</h3>
-        <p>
-          Brindar servicios contables confiables y personalizados que permitan a nuestros clientes tomar decisiones informadas y cumplir con sus obligaciones legales.
-        </p>
+    <h1>¿Quiénes somos?</h1>
+    <div class="contenedor-nosotros">
+      <div class="fila-superior">
+        <div class="caja">
+          <h3>Misión</h3>
+          <p>
+            Brindar servicios contables confiables y personalizados que permitan a nuestros clientes tomar decisiones informadas y cumplir con sus obligaciones legales.
+          </p>
+        </div>
+        <div class="caja">
+          <h3>Visión</h3>
+          <p>
+            Ser una firma reconocida por su excelencia, ética profesional e innovación en la prestación de servicios contables en Colombia.
+          </p>
+        </div>
       </div>
-      <div class="caja">
-        <h3>Visión</h3>
-        <p>
-          Ser una firma reconocida por su excelencia, ética profesional e innovación en la prestación de servicios contables en Colombia.
-        </p>
-      </div>
-    </div>
 
-    <div class="fila-inferior">
-      <div class="caja">
-        <h3>Valores</h3>
-        <ul>
-          <li>Responsabilidad</li>
-          <li>Transparencia</li>
-          <li>Compromiso</li>
-          <li>Integridad</li>
-        </ul>
+      <div class="fila-inferior">
+        <div class="caja">
+          <h3>Valores</h3>
+          <ul>
+            <li>Responsabilidad</li>
+            <li>Transparencia</li>
+            <li>Compromiso</li>
+            <li>Integridad</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
 
   <div id="footer-container"></div>
 
   <script>
-    // Función para cargar contenido HTML de forma reusable
+    // Función para cargar contenido HTML reutilizable (header y footer)
     function loadHTML(url, elementId) {
       fetch(url)
         .then(response => {
-          // Verifica si la respuesta de la red fue exitosa
           if (!response.ok) {
-            // Lanza un error si la respuesta no es OK (ej. 404 Not Found)
             throw new Error(`HTTP error! status: ${response.status} al cargar ${url}`);
           }
-          return response.text(); // Devuelve el contenido del archivo como texto
+          return response.text();
         })
         .then(data => {
-          // Inserta el contenido HTML en el elemento con el ID especificado
           document.getElementById(elementId).innerHTML = data;
         })
         .catch(error => {
-          // Captura y muestra cualquier error que ocurra durante la carga
           console.error(`Error al cargar el contenido:`, error);
         });
     }
 
-    // Cargar el header y el footer cuando el DOM esté completamente cargado
     document.addEventListener('DOMContentLoaded', () => {
-      loadHTML('header.html', 'header-container'); // Carga el header
-      loadHTML('footer.html', 'footer-container'); // Carga el footer
+      loadHTML('header.html', 'header-container');
+      loadHTML('footer.html', 'footer-container');
     });
   </script>
 </body>
