@@ -22,23 +22,27 @@
     </section>
   </main>
 
-  <div id="footer-container">
-    <footer class="footer">
-      <p>© 2025 DMLR Servicios Contables. Todos los derechos reservados.</p>
-    </footer>
-  </div>
+  <div id="footer-container"></div>
 
   <script>
-    // Cargar el header dinámicamente
-    fetch('header.html')
-      .then(response => {
-        if (!response.ok) throw new Error('No se pudo cargar el header');
-        return response.text();
-      })
-      .then(data => {
-        document.getElementById('header-container').innerHTML = data;
-      })
-      .catch(error => console.error('Error al cargar el header:', error));
+    function loadHTML(url, elementId) {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error(`No se pudo cargar ${url}`);
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById(elementId).innerHTML = data;
+        })
+        .catch(error => console.error('Error al cargar contenido:', error));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const basePath = (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? '' : '/dmlrcontables';
+
+      loadHTML(`${basePath}/header.html`, 'header-container');
+      loadHTML(`${basePath}/footer.html`, 'footer-container');
+    });
   </script>
 
 </body>
