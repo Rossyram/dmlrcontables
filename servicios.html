@@ -36,3 +36,32 @@
     </section>
     
     <p>También ofrecemos orientación para nuevos emprendedores, microempresas y trabajadores independientes.</p>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    function loadHTML(url, elementId) {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Error ${response.status} al cargar ${url}`);
+          }
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById(elementId).innerHTML = data;
+        })
+        .catch(error => {
+          console.error('Error al cargar el contenido:', error);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHTML('header.html', 'header-container');
+      loadHTML('footer.html', 'footer-container');
+    });
+  </script>
+
+</body>
+</html>
